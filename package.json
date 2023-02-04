@@ -9,8 +9,12 @@
   "author": "akshat",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.9.0"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0",
+    "validator": "^13.9.0"
   }
 }
