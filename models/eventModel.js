@@ -11,6 +11,10 @@ const eventSchema = new Schema({
     type: String,
     required: [true, "Please provide the event detail"],
   },
+  date: {
+    type: Date,
+    required: [true, "Please provide the event date"],
+  },
   owner: {
     type: Schema.Types.ObjectId,
     required: [true, "Event owner is required"],
