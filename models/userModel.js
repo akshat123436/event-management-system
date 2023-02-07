@@ -23,6 +23,14 @@ const userSchema = new Schema({
     minLength: [8, "Password Should be atleast 8 characters long"],
     select: false,
   },
+  event: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+      },
+    ],
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });

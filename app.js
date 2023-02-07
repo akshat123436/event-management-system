@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const ErrorHandler = require("./utils/ErrorHandlerClass");
+const cookieParser = require("cookie-parser");
 const app = express();
 if (process.env.NODE_ENV !== "PRODUCTION") {
   dotenv.config({ path: "./.env" });
@@ -16,6 +17,8 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
+app.use(cookieParser());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRoutes);
