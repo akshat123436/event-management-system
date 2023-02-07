@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const eventRoutes = require("./routes/eventRoutes.js");
 const ErrorHandler = require("./utils/ErrorHandlerClass");
 const cookieParser = require("cookie-parser");
 const app = express();
@@ -22,7 +23,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/user", userRoutes);
-
+app.use("/event", eventRoutes);
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.message = err.message || "Unknown Error";
