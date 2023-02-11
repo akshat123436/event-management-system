@@ -7,8 +7,11 @@ const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 module.exports.register = catchAsyncFunction(async (req, res, next) => {
   const { name, email, password } = req.body;
+  console.log("register controller");
+  console.log(req.body);
   const newUser = new User({ name, email, password });
   await newUser.save();
+  console.log(newUser);
   res.status(200).json({
     success: true,
     message: "User Registered Successfully",

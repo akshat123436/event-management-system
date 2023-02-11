@@ -3,7 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
-
+// const arrayUniquePlugin = require("mongoose-unique-array");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -28,12 +28,24 @@ const userSchema = new Schema({
       {
         type: Schema.Types.ObjectId,
         ref: "Event",
+        // unique: true,
+      },
+    ],
+  },
+  invitedTo: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Event",
+        // unique: true,
       },
     ],
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
+
+// userSchema.plugin(arrayUniquePlugin);
 
 // To hash the password before it is saved (if modified)
 userSchema.pre("save", async function (next) {
